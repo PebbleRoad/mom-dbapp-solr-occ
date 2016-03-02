@@ -16,7 +16,6 @@
     <field name="ngram"        type="text_suggest_ngram"     indexed="true"  stored="false" multiValued="true" />
     <field name="spell"        type="text_spell"             indexed="true"  stored="false" multiValued="true" />
     <field name="signature"    type="string"                 indexed="true"  stored="true" />
-    <field name="company"      type="string"                 indexed="true"  stored="false" />
 
     <!-- DYNAMIC FIELDS  *************************************************************************************************** -->
     <dynamicField name="*_i"          type="int"           indexed="true"  stored="true"/>
@@ -29,14 +28,16 @@
     <dynamicField name="*_txt"        type="text_general"  indexed="true"  stored="true" multiValued="true"/>
     <dynamicField name="*_coordinate" type="tdouble"       indexed="true"  stored="false" />
     <dynamicField name="*_tdt"        type="tdate"         indexed="true"  stored="true"/>
+    <dynamicField name="*_raw"        type="string"        indexed="true"  stored="true" docValues="true" />
     <dynamicField name="*"            type="ignored"                                     multiValued="true" />
 
   </fields>
 
   <!-- COPY FIELDS  *************************************************************************************************** -->
-  <copyField source="title_t" dest="ngram"/>
+  <copyField source="title_t" dest="ngram" />
+  <copyField source="title_t" dest="title_raw" />
 <!--   <copyField source="offender_t" dest="company"/> -->
-  <copyField source="title_t" dest="spell"/>
+  <copyField source="title_t" dest="spell" />
   <!-- <copyField source="designation_t" dest="spell"/> -->
 
   <types>
